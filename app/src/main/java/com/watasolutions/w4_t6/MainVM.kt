@@ -9,9 +9,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainVM : ViewModel() {
-    private var _listOfIdol: MutableLiveData<List<Image>> = MutableLiveData()
+    private var _listOfImage: MutableLiveData<List<Image>> = MutableLiveData()
     val listOfIdol: LiveData<List<Image>>
-        get() = _listOfIdol
+        get() = _listOfImage
 
     private var _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     val isLoading: LiveData<Boolean>
@@ -25,9 +25,7 @@ class MainVM : ViewModel() {
             val dataSet = DataStore.getDataSet()
 
             _isLoading.postValue(false)
-            _listOfIdol.postValue(dataSet)
+            _listOfImage.postValue(dataSet)
         }
-
-
     }
 }

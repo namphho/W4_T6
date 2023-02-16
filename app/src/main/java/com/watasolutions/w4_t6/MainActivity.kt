@@ -26,9 +26,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView() {
+        binding.rvImage.layoutManager = LinearLayoutManager(this);
+
         adapter = ImageAdapter()
-        binding.rvIdol.layoutManager = LinearLayoutManager(this);
-        binding.rvIdol.adapter = adapter
+        binding.rvImage.adapter = adapter
     }
 
 

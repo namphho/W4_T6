@@ -29,7 +29,7 @@ class ImageAdapter : ListAdapter<Image, ImageViewHolder>(ImageDiffUtil()) {
             oldItem: Image,
             newItem: Image
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.name == newItem.name && oldItem.link == newItem.name
         }
 
     }

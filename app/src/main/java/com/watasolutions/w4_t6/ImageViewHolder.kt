@@ -15,17 +15,17 @@ class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun from(parent: ViewGroup): ImageViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val view =
-                layoutInflater.inflate(R.layout.item_view_idol, parent, false)
+                layoutInflater.inflate(R.layout.item_view_image, parent, false)
             return ImageViewHolder(view)
         }
     }
 
-    fun bindData(idol: Image) {
+    fun bindData(image: Image) {
         val tvTitle = itemView.findViewById<TextView>(R.id.tv_title);
         val tvDescription = itemView.findViewById<TextView>(R.id.tv_description)
         val ivAvatar = itemView.findViewById<ImageView>(R.id.iv_avatar)
-        tvTitle.text = idol.name
-        tvDescription.text = idol.author
-        Glide.with(itemView.context).load(idol.link).centerCrop().into(ivAvatar)
+        tvTitle.text = image.name
+        tvDescription.text = image.author
+        Glide.with(itemView.context).load(image.link).centerCrop().into(ivAvatar)
     }
 }

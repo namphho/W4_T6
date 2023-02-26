@@ -28,4 +28,12 @@ class MainVM : ViewModel() {
             _listOfImage.postValue(dataSet)
         }
     }
+
+    fun handleItemWhenClicked(item: Image) {
+        /// TODO
+    }
+
+    fun handleItemWhenLongClicked(item: Image) {
+        /// TODO
+    }
 }

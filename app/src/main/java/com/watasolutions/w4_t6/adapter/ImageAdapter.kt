@@ -1,11 +1,19 @@
-package com.watasolutions.w4_t6
-
+package com.watasolutions.w4_t6.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.watasolutions.w4_t6.model.Image
 
-class ImageAdapter : ListAdapter<Image, ImageViewHolder>(ImageDiffUtil()) {
+interface OnImageItemListener {
+    fun onClickItem(item: Image)
+
+    fun onLongClick(item: Image)
+}
+
+class ImageAdapter(val itemListener: OnImageItemListener) :
+    ListAdapter<Image, ImageViewHolder>
+        (ImageDiffUtil()) {
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -15,8 +23,8 @@ class ImageAdapter : ListAdapter<Image, ImageViewHolder>(ImageDiffUtil()) {
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        val idol = getItem(position)
-        holder.bindData(idol)
+        val image = getItem(position)
+        holder.bindData(image, itemListener)
     }
 
 
@@ -33,6 +41,5 @@ class ImageAdapter : ListAdapter<Image, ImageViewHolder>(ImageDiffUtil()) {
         }
 
     }
-
 
 }

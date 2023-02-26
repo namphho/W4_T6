@@ -2,12 +2,16 @@ package com.watasolutions.w4_t6
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.watasolutions.w4_t6.adapter.ImageAdapter
+import com.watasolutions.w4_t6.adapter.OnImageItemListener
 import com.watasolutions.w4_t6.databinding.ActivityMainBinding
+import com.watasolutions.w4_t6.model.Image
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -28,8 +32,22 @@ class MainActivity : AppCompatActivity() {
     private fun setUpRecyclerView() {
         binding.rvImage.layoutManager = LinearLayoutManager(this);
 
-        adapter = ImageAdapter()
+        adapter = ImageAdapter(onImageClickListener)
         binding.rvImage.adapter = adapter
+    }
+
+    private val onImageClickListener  = object : OnImageItemListener {
+        override fun onClickItem(item: Image) {
+            viewModel.handleItemWhenClicked(item)
+            Toast.makeText(this@MainActivity, "on click item", Toast.LENGTH_SHORT).show();
+        }
+
+        override fun onLongClick(item: Image) {
+            viewModel.handleItemWhenLongClicked(item)
+            Toast.makeText(this@MainActivity, "on click long item", Toast
+                .LENGTH_SHORT).show();
+        }
+
     }
 
 
